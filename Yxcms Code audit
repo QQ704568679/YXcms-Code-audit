@@ -1,0 +1,90 @@
+YXCMS code audit
+
+[suggested description]
+
+In the root directory“D:\phpStudy\WWW\1\protected\apps\default\view\default\extend_guestbook.php”
+In the fortieth line code under the page：name='content'The variable does not have filtering input and output leading to the existence of a XSS vulnerability
+Include
+“D:\phpStudy\WWW\1\protected\apps\default\view\mobile\extend_guestbook.php”
+Of the fifty-third lines of code under the pageThe variable：name='content'Filtering without input and output leads to the existence of a XSS vulnerability
+>> 
+------------------------------------------ 
+>> 
+[additional information]
+
+Yxcms building system (compatible cell phone) v1.4.7 debug
+The source code has a XSS vulnerability
+The cause of the loophole is:
+
+This vulnerability can be executed by the malicious code that is entered at the position of the input box
+
+Methods that cause defects:
+
+In the root directory“D:\phpStudy\WWW\1\protected\apps\default\view\default\extend_guestbook.php”
+In the fortieth line code under the page：name='content'The variable does not have filtering input and output leading to the existence of a XSS vulnerability
+Include
+“D:\phpStudy\WWW\1\protected\apps\default\view\mobile\extend_guestbook.php”
+Of the fifty-third lines of code under the pageThe variable：name='content'Filtering without input and output leads to the existence of a XSS vulnerability
+
+The location of the vulnerability in the source code:
+
+In the fortieth line code under this page“name='content'”There is no filter input and output that leads to the existence of XSS
+
+That's the thirty-sixth line code you see now“name='content'”
+
+D:\phpStudy\WWW\1\protected\apps\default\view\mobile\extend_guestbook.php
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Message:</label><div class="controls"><textarea name='content' cols="30" rows="4"></textarea></div>
+                
+And the following code is in：
+D:\phpStudy\WWW\1\protected\apps\default\view\default\extIllegal characters without filtering output and input lead to the existence of XSSend_guestbook.php
+In the fifty-third lines of the code“name='content'”Illegal characters without filtering output and input lead to the existence of XSS
+                
+[vulnerability hazard]           
+An attacker can insert malicious code into a web page to cause the user
+Or the administrator triggers the vulnerability, which may lead to
+Administrator or user vulnerability, which may lead to
+The server crashes.
+
+An environment that triggers a vulnerability:
+Malicious users only need to insert malicious code in the message board to trigger the vulnerability
+
+Version information
+
+Yxcms building system (compatible cell phone) v1.4.7
+POC:
+http://192.168.2.230/1/index.php?r=default/column/index&col=guestbook
+
+payload：
+<IFRAME src=javascript:alert('52')></IFRAME>
+
+[repair recommendations]
+Repair source code avoidance vulnerability is produced again
+
+[loophole type]
+
+Cross site scripting processing (XSS)
+
+[vendor merchants]
+
+Yxcms
+
+[affected product code base]
+
+Yxcms building system (compatible cell phone) v1.4.7
+
+[affected components]
+
+Information leaks from users and administrators
+
+[other attack types]
+
+Storage type XSS weakness
+
+[attack medium]
+
+<IFRAME src=javascript:alert('52')></IFRAME>
+
+
+ 
